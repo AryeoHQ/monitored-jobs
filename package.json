@@ -1,0 +1,43 @@
+{
+    "name": "monitored-jobs-package",
+    "version": "1.0.0",
+    "description": "TODO",
+    "directories": {
+        "test": "tests"
+    },
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/AryeoHQ/monitored-jobs.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/AryeoHQ/monitored-jobs/issues"
+    },
+    "homepage": "https://github.com/AryeoHQ/monitored-jobs#readme",
+    "dependencies": {
+        "@heroicons/vue": "^1.0.5",
+        "@inertiajs/inertia": "^0.10.1",
+        "@inertiajs/inertia-vue3": "^0.5.2",
+        "@inertiajs/progress": "^0.2.6",
+        "laravel-mix": "^6.0.39",
+        "lodash": "^4.17.21",
+        "vue": "^3.2.22"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.0",
+        "postcss": "^8.3.11",
+        "tailwindcss": "^2.2.19",
+        "vue-loader": "^16.8.3"
+    }
+}

@@ -1,0 +1,49 @@
+name: Build
+on: [push]
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        php: [8.0, 8.1]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Checkout
+        if: github.ref == 'refs/heads/main'
+        run: git checkout "${GITHUB_REF:11}"
+      - name: Setup PHP with PECL extension
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+      - uses: shogo82148/actions-setup-redis@v1
+        with:
+          redis-version: '6.x'
+      - run: redis-cli ping
+      - name: Composer Install
+        run: composer install
+      - name: Run Tests
+        run: ./vendor/bin/phpunit
+      - name: Coveralls
+        if: github.ref == 'refs/heads/main'
+        run: ./vendor/bin/php-coveralls -v --coverage_clover build/coverage.xml --json_path build/coveralls-upload.json
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  release:
+    name: Release
+    if: github.ref == 'refs/heads/main'
+    needs: test
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Install dependencies
+        run: npm install
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release@18
