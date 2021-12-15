@@ -14,7 +14,7 @@ class AddTableIndexes extends Migration
     public function up()
     {
         Schema::table('monitored_job_meta', function (Blueprint $table) {
-            $table->index(['type', 'value', 'monitored_job_id']);
+            $table->index(['type', 'monitored_job_id']);
         });
         Schema::table('monitored_jobs', function (Blueprint $table) {
             $table->index(['name']);
@@ -32,7 +32,7 @@ class AddTableIndexes extends Migration
             $table->dropIndex(['name']);
         });
         Schema::table('monitored_job_meta', function (Blueprint $table) {
-            $table->dropIndex(['type', 'value', 'monitored_job_id']);
+            $table->dropIndex(['type', 'monitored_job_id']);
         });
     }
 }
