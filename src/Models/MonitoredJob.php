@@ -2,13 +2,13 @@
 
 namespace Aryeo\MonitoredJobs\Models;
 
+use Aryeo\MonitoredJobs\Tests\Factories\MonitoredJobFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Prunable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\DB;
-use Aryeo\MonitoredJobs\Tests\Factories\MonitoredJobFactory;
 
 class MonitoredJob extends Model
 {
@@ -26,6 +26,7 @@ class MonitoredJob extends Model
 
     public $casts = [
         'payload' => 'array',
+        'retry_until' => 'datetime',
     ];
 
     public function prunable()
