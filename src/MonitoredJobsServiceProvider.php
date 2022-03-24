@@ -48,7 +48,7 @@ class MonitoredJobsServiceProvider extends EventServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../config/config.php' => config_path('monitored-jobs.php'),
-            ], 'config');
+            ], 'monitored-jobs');
         }
     }
 
