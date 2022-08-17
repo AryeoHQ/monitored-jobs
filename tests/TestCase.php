@@ -2,11 +2,11 @@
 
 namespace Aryeo\MonitoredJobs\Tests;
 
+use Aryeo\MonitoredJobs\MonitoredJobsServiceProvider;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Schema;
-use Aryeo\MonitoredJobs\MonitoredJobsServiceProvider;
 use Orchestra\Testbench\TestCase as TestbenchTestCase;
 
 class TestCase extends TestbenchTestCase

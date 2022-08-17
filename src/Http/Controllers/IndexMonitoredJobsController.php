@@ -2,13 +2,13 @@
 
 namespace Aryeo\MonitoredJobs\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-use Inertia\Inertia;
 use Aryeo\MonitoredJobs\Http\Resources\MonitoredJobResource;
 use Aryeo\MonitoredJobs\Models\MonitoredJob;
 use Aryeo\MonitoredJobs\Models\MonitoredJobMeta;
 use Aryeo\MonitoredJobs\Services\MonitoredJobService;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Inertia\Inertia;
 
 class IndexMonitoredJobsController extends Controller
 {

@@ -2,10 +2,10 @@
 
 namespace Aryeo\MonitoredJobs\Tests\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use Aryeo\MonitoredJobs\Models\MonitoredJob;
 use Aryeo\MonitoredJobs\Tests\Fixtures\Jobs\ExampleSuccessfulJob;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class MonitoredJobFactory extends Factory
 {

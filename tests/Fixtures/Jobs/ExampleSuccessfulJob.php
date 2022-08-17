@@ -2,12 +2,12 @@
 
 namespace Aryeo\MonitoredJobs\Tests\Fixtures\Jobs;
 
+use Aryeo\MonitoredJobs\Tests\Fixtures\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Aryeo\MonitoredJobs\Tests\Fixtures\Models\User;
 
 class ExampleSuccessfulJob implements ShouldQueue
 {

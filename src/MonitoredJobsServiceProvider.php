@@ -2,6 +2,13 @@
 
 namespace Aryeo\MonitoredJobs;
 
+use Aryeo\MonitoredJobs\Http\Middleware\HandleInertiaRequests;
+use Aryeo\MonitoredJobs\Listeners\HandleJobExceptionOccurred;
+use Aryeo\MonitoredJobs\Listeners\HandleJobFailed;
+use Aryeo\MonitoredJobs\Listeners\HandleJobProcessed;
+use Aryeo\MonitoredJobs\Listeners\HandleJobProcessing;
+use Aryeo\MonitoredJobs\Listeners\HandleJobQueued;
+use Aryeo\MonitoredJobs\Listeners\HandleJobRetryRequested;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider;
 use Illuminate\Queue\Events\JobExceptionOccurred;
 use Illuminate\Queue\Events\JobFailed;
@@ -10,13 +17,6 @@ use Illuminate\Queue\Events\JobProcessing;
 use Illuminate\Queue\Events\JobQueued;
 use Illuminate\Queue\Events\JobRetryRequested;
 use Illuminate\Support\Facades\Route;
-use Aryeo\MonitoredJobs\Http\Middleware\HandleInertiaRequests;
-use Aryeo\MonitoredJobs\Listeners\HandleJobExceptionOccurred;
-use Aryeo\MonitoredJobs\Listeners\HandleJobFailed;
-use Aryeo\MonitoredJobs\Listeners\HandleJobProcessed;
-use Aryeo\MonitoredJobs\Listeners\HandleJobProcessing;
-use Aryeo\MonitoredJobs\Listeners\HandleJobQueued;
-use Aryeo\MonitoredJobs\Listeners\HandleJobRetryRequested;
 
 class MonitoredJobsServiceProvider extends EventServiceProvider
 {

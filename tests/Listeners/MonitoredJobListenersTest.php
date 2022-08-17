@@ -2,11 +2,11 @@
 
 namespace Aryeo\MonitoredJobs\Tests;
 
-use Illuminate\Support\Facades\Config;
 use Aryeo\MonitoredJobs\Tests\Fixtures\Jobs\ExampleFailedJob;
 use Aryeo\MonitoredJobs\Tests\Fixtures\Jobs\ExampleJobWithNoParameters;
 use Aryeo\MonitoredJobs\Tests\Fixtures\Jobs\ExampleSuccessfulJob;
 use Aryeo\MonitoredJobs\Tests\Fixtures\Models\User;
+use Illuminate\Support\Facades\Config;
 
 class MonitoredJobListenersTest extends MonitoredJobTestCase
 {

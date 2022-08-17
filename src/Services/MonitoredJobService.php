@@ -2,10 +2,10 @@
 
 namespace Aryeo\MonitoredJobs\Services;
 
-use Illuminate\Contracts\Queue\Job;
-use Illuminate\Queue\Events\JobQueued;
 use Aryeo\MonitoredJobs\Models\MonitoredJob;
 use Aryeo\MonitoredJobs\Models\MonitoredJobMeta;
+use Illuminate\Contracts\Queue\Job;
+use Illuminate\Queue\Events\JobQueued;
 
 class MonitoredJobService
 {

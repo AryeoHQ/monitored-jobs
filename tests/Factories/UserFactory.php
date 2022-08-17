@@ -2,9 +2,9 @@
 
 namespace Aryeo\MonitoredJobs\Tests\Factories;
 
+use Aryeo\MonitoredJobs\Tests\Fixtures\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use Aryeo\MonitoredJobs\Tests\Fixtures\Models\User;
 
 class UserFactory extends Factory
 {

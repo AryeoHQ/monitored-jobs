@@ -2,9 +2,9 @@
 
 namespace Aryeo\MonitoredJobs\Http\Resources;
 
+use Aryeo\MonitoredJobs\Models\MonitoredJobMeta;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Str;
-use Aryeo\MonitoredJobs\Models\MonitoredJobMeta;
 
 class MonitoredJobResource extends JsonResource
 {
