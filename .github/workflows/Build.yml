@@ -3,12 +3,12 @@ on: [push]
 jobs:
   test:
     name: Test
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: [8.0, 8.1]
+        php: [8.2, 8.3]
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Checkout
         if: github.ref == 'refs/heads/main'
         run: git checkout "${GITHUB_REF:11}"
@@ -18,7 +18,7 @@ jobs:
           php-version: ${{ matrix.php }}
       - uses: shogo82148/actions-setup-redis@v1
         with:
-          redis-version: '6.x'
+          redis-version: '7.x'
       - run: redis-cli ping
       - name: Composer Install
         run: composer install
@@ -33,12 +33,12 @@ jobs:
     name: Release
     if: github.ref == 'refs/heads/main'
     needs: test
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: 16
       - name: Install dependencies

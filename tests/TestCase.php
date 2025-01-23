@@ -20,8 +20,6 @@ class TestCase extends TestbenchTestCase
         Carbon::setTestNow(Carbon::now());
 
         $this->setupDatabase();
-
-        $this->withFactories(__DIR__.'/factories');
     }
 
     protected function setupDatabase()

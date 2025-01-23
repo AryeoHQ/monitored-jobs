@@ -25,7 +25,7 @@ class TagsServiceTest extends MonitoredJobTestCase
         $job = new ExampleSuccessfulJob($this->user, $this->user);
 
         // When
-        $tags = (resolve(TagsService::class))->for($job);
+        $tags = resolve(TagsService::class)->for($job);
 
         // Then
         $this->assertContains(User::class.':1', $tags);
@@ -37,7 +37,7 @@ class TagsServiceTest extends MonitoredJobTestCase
         $job = new ExampleSuccessfulJob($this->user, 'bar');
 
         // When
-        $tags = (resolve(TagsService::class))->for($job);
+        $tags = resolve(TagsService::class)->for($job);
 
         // Then
         $this->assertContains('foo:bar', $tags);
@@ -49,7 +49,7 @@ class TagsServiceTest extends MonitoredJobTestCase
         $job = new ExampleSuccessfulJob($this->user, 100);
 
         // When
-        $tags = (resolve(TagsService::class))->for($job);
+        $tags = resolve(TagsService::class)->for($job);
 
         // Then
         $this->assertContains('foo:100', $tags);
@@ -61,7 +61,7 @@ class TagsServiceTest extends MonitoredJobTestCase
         $job = new ExampleSuccessfulJob($this->user, [1, 2, 3]);
 
         // When
-        $tags = (resolve(TagsService::class))->for($job);
+        $tags = resolve(TagsService::class)->for($job);
 
         // Then
         $this->assertContains('foo:[1,2,3]', $tags);
@@ -75,7 +75,7 @@ class TagsServiceTest extends MonitoredJobTestCase
         $job = new ExampleSuccessfulJob($this->user, $object);
 
         // When
-        $tags = (resolve(TagsService::class))->for($job);
+        $tags = resolve(TagsService::class)->for($job);
 
         // Then
         $this->assertCount(1, $tags);

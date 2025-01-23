@@ -13,16 +13,12 @@ use Illuminate\Events\CallQueuedListener;
 use Illuminate\Mail\SendQueuedMailable;
 use Illuminate\Notifications\SendQueuedNotifications;
 use Illuminate\Support\Collection;
-use ReflectionClass;
 use ReflectionProperty;
-use stdClass;
 
 class TagsService
 {
     /**
      * Determine the tags for the given job.
-     *
-     * @param mixed $job
      */
     public static function for($job): Collection
     {
@@ -36,7 +32,6 @@ class TagsService
     /**
      * Extract tags from job object.
      *
-     * @param mixed $job
      * @return array
      */
     public static function extractExplicitTags($job)
@@ -49,7 +44,6 @@ class TagsService
     /**
      * Determine tags for the given queued listener.
      *
-     * @param mixed $job
      * @return array
      */
     protected static function tagsForListener($job)
@@ -63,8 +57,6 @@ class TagsService
 
     /**
      * Determine tags for the given job.
-     *
-     * @return mixed
      */
     protected static function explicitTags(array $jobs)
     {
@@ -76,7 +68,6 @@ class TagsService
     /**
      * Get the actual target for the given job.
      *
-     * @param mixed $job
      * @return array
      */
     public static function targetsFor($job)
@@ -103,7 +94,7 @@ class TagsService
         $tags = [];
 
         foreach ($targets as $target) {
-            $targetClass = new ReflectionClass($target);
+            $targetClass = new \ReflectionClass($target);
 
             if (!$targetClass->hasMethod('__construct')) {
                 continue;
@@ -116,7 +107,7 @@ class TagsService
             )->pluck('name');
 
             $constructorParams = collect(
-                (new ReflectionClass($target))
+                (new \ReflectionClass($target))
                 ->getMethod('__construct')
                 ->getParameters()
             )->pluck('name');
@@ -162,13 +153,11 @@ class TagsService
 
     /**
      * Get the value of the given ReflectionProperty.
-     *
-     * @param mixed $target
      */
-    protected static function getValue(ReflectionProperty $property, $target)
+    protected static function getValue(\ReflectionProperty $property, $target)
     {
-        if (method_exists($property, 'isInitialized') &&
-            !$property->isInitialized($target)) {
+        if (method_exists($property, 'isInitialized')
+            && !$property->isInitialized($target)) {
             return;
         }
 
@@ -177,25 +166,19 @@ class TagsService
 
     /**
      * Extract the listener from a queued job.
-     *
-     * @param mixed $job
-     * @return mixed
      */
     protected static function extractListener($job)
     {
-        return (new ReflectionClass($job->class))->newInstanceWithoutConstructor();
+        return (new \ReflectionClass($job->class))->newInstanceWithoutConstructor();
     }
 
     /**
      * Extract the event from a queued job.
-     *
-     * @param mixed $job
-     * @return mixed
      */
     protected static function extractEvent($job)
     {
         return isset($job->data[0]) && is_object($job->data[0])
                         ? $job->data[0]
-                        : new stdClass();
+                        : new \stdClass();
     }
 }

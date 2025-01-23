@@ -9,13 +9,10 @@ class HandleJobProcessedTest extends MonitoredJobTestCase
 {
     public function testItTracksProcessedStatus()
     {
-        // Given
         $user = User::factory()->create();
 
-        // When
         ExampleSuccessfulJob::dispatch($user, 'bar');
 
-        // Then
         $job = $this->getMonitoredJob(ExampleSuccessfulJob::class);
         $this->assertJobMetadata($job, 'status', 'processed');
         $this->assertJobMetadata($job, 'tag', User::class.':1');
